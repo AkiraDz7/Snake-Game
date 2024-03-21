@@ -6,4 +6,4 @@ Alimentação: No início do jogo, a serpente é composta por apenas uma célula
 
 Crescimento e Pontuação: Conforme a serpente come mais comida, seu comprimento aumenta. A pontuação do jogador geralmente é determinada pela quantidade de comida consumida.
 
-Colisões: O jogo termina se a cabeça da serpente colidir com as paredes do campo de jogo ou com seu próprio corpo. Quanto mais comida a serpente consome, mais difícil se torna evitar colisões, já que seu próprio corpo pode começar a bloquear seu caminho.
+Colisões: O jogo termina se a cabeça da serpente colidir com as paredes do campo de jogo, com seu próprio corpo ou quando a serpente cobre o campo inteiro. Quanto mais comida a serpente consome, mais difícil se torna evitar colisões, já que seu próprio corpo pode começar a bloquear seu caminho.
