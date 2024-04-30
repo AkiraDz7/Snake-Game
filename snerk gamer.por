@@ -1,5 +1,5 @@
 programa
-{ 			
+{ 			
 		inclua biblioteca Graficos --> g
 		inclua biblioteca Util --> u
 		inclua biblioteca Teclado --> t
@@ -25,6 +25,7 @@ programa
 				desenhar_painel()
 				direcionar_cobra()
 				mover_cobra()
+				reiniciar()
 				desenhar_cabeca_cobra()
 				g.renderizar()
 				u.aguarde(delay)
@@ -94,14 +95,47 @@ programa
 			}
 		
 		}
-	
-        }
+	funcao logico cobra_bateu_parede(){
+		se(xcabeca_cobra > 580 ou xcabeca_cobra < 0){
+			retorne verdadeiro
+
+			}
+			senao se (ycabeca_cobra > 580 ou ycabeca_cobra < 50){
+			 retorne verdadeiro
+			}
+			senao {
+				retorne falso
+				}
+		
+		} 
+		funcao reiniciar () {
+			se (cobra_bateu_parede()){
+				xcabeca_cobra = 257
+				ycabeca_cobra = 257
+				para_baixo = falso
+				direita = falso
+				esquerda = falso
+				para_cima = falso
+				}
+		}
+	}
+   
+
+
+
+
+
+
+
+
+
+        
 /* $$$ Portugol Studio $$$ 
  * 
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 2104; 
+ * @POSICAO-CURSOR = 2258; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
