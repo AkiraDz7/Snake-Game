@@ -26,6 +26,8 @@ programa
 		inteiro pontuacao = 0
 
 		logico direita=falso, esquerda=falso, para_cima=falso, para_baixo=falso
+
+		inteiro score = 0
 		
 	
 	funcao inicio()
@@ -63,53 +65,64 @@ programa
 		g.definir_cor(0x084d6e)
 		g.definir_tamanho_texto(25.0)
 		g.desenhar_texto(10, 10,"Pontuação atual: "+ pontuacao)
+		g.desenhar_texto(300, 10, "Melhor Pontuação: " + score)
 		}	
 	funcao desenhar_cabeca_cobra(){
 		g.definir_cor(g.COR_PRETO)
-		g.desenhar_retangulo(xcabeca_cobra, ycabeca_cobra, 25, 25, falso, verdadeiro)
+		g.desenhar_retangulo(xcabeca_cobra, ycabeca_cobra, 25, 25, verdadeiro , verdadeiro)
 		}
 		funcao direcionar_cobra(){
-			se(t.tecla_pressionada(t.TECLA_SETA_DIREITA)){
-				direita = verdadeiro
-				esquerda = falso
-				para_cima = falso
-				para_baixo = falso
+			se(t.tecla_pressionada(t.TECLA_SETA_DIREITA) ou t.tecla_pressionada(t.TECLA_D)){
+				se (esquerda == falso){
+					direita = verdadeiro
+					esquerda = falso
+					para_cima = falso
+					para_baixo = falso
 				}
-			senao se (t.tecla_pressionada(t.TECLA_SETA_ESQUERDA)){
-				esquerda = verdadeiro
-				direita = falso
-				para_cima = falso
-				para_baixo = falso
 				
+			}
+			senao se (t.tecla_pressionada(t.TECLA_SETA_ESQUERDA) ou t.tecla_pressionada(t.TECLA_A)){
+				se (direita == falso){
+					direita = falso
+					esquerda = verdadeiro
+					para_cima = falso
+					para_baixo = falso
 				}
-			senao se (t.tecla_pressionada(t.TECLA_SETA_ACIMA)){
-				para_cima = verdadeiro
-				para_baixo = falso
-				esquerda = falso
-				direita = falso
 				}
-			senao se (t.tecla_pressionada(t.TECLA_SETA_ABAIXO)){
-				para_baixo = verdadeiro
-				direita = falso
-				esquerda = falso
-				para_cima = falso
-				
+			senao se (t.tecla_pressionada(t.TECLA_SETA_ACIMA) ou t.tecla_pressionada(t.TECLA_W)){
+				se (para_baixo == falso){
+					direita = falso
+					esquerda = falso
+					para_cima = verdadeiro
+					para_baixo = falso
+				}
+				}
+			senao se (t.tecla_pressionada(t.TECLA_SETA_ABAIXO) ou t.tecla_pressionada(t.TECLA_S)){
+				se (para_cima == falso){
+					direita = falso
+					esquerda = falso
+					para_cima = falso
+					para_baixo = verdadeiro
+				}
 				}
 			}
 	funcao mover_cobra(){
 		se(direita){
 			xcabeca_cobra +=25
+			
 			}
 		senao se(esquerda){
 			xcabeca_cobra-=25
+			 	
 			}
 		senao se(para_cima){
 			ycabeca_cobra-=25
+			
 			}
 		senao se(para_baixo){
 			ycabeca_cobra+=25
+			
 			}
-		
 		}
 	funcao logico cobra_bateu_parede(){
 		se(xcabeca_cobra > 575 ou xcabeca_cobra < 0){
@@ -129,10 +142,12 @@ programa
 				tamanho_cobra = 2
 				xcabeca_cobra = 275
 				ycabeca_cobra = 275
-				para_baixo = falso
-				direita = falso
-				esquerda = falso
-				para_cima = falso
+				
+				
+		direita=falso
+		esquerda=falso
+		para_cima=falso
+		para_baixo=falso		
 				}
 		}
 		funcao logico cobra_comeu_comida(){
@@ -170,12 +185,18 @@ programa
 				tamanho_cobra++
 				}
 				para(inteiro i = 0 ; i < tamanho_cobra; i++){
-					g.desenhar_retangulo(xcauda_cobra[i],ycauda_cobra[i], 25, 25, falso,verdadeiro)
+					g.definir_cor(g.COR_PRETO)
+					g.desenhar_retangulo(xcauda_cobra[i],ycauda_cobra[i], 25, 25, verdadeiro ,falso)
 					}
 			}
 		funcao atualizar_pontuacao(){
 			pontuacao = tamanho_cobra - 2
+		se(pontuacao == score e cobra_comeu_comida() == verdadeiro){
+				score++
+				
+				}
 			}	
+		
 		funcao logico cobra_se_mordeu(){
 			logico mordeu = falso
 			para(inteiro i = 0 ; i < tamanho_cobra; i++){
@@ -202,7 +223,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 4473; 
+ * @POSICAO-CURSOR = 3248; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
